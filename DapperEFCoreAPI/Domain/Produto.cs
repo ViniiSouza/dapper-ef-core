@@ -9,5 +9,7 @@
         public decimal Valor { get; set; }
 
         public int Estoque { get; set; }
+
+        public Categoria Categoria { get; set; }
     }
 }
