@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DapperEFCoreAPI.Domain;
+using DapperEFCoreAPI.Infra.Seeds;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace DapperEFCoreAPI.Infra
@@ -7,6 +9,9 @@ namespace DapperEFCoreAPI.Infra
     {
         private const string Mapping_Path = "DapperEFCoreAPI.Infra.Mappings";
         private readonly string _connectionString;
+
+        public virtual DbSet<Produto> Produto { get; set; }
+        public virtual DbSet<Categoria> Categoria { get; set; }
 
         public DapperEFCoreDbContext(IConfiguration configuration) : base() 
         {
@@ -23,6 +28,10 @@ namespace DapperEFCoreAPI.Infra
                     dynamic instance = Activator.CreateInstance(type);
                     modelBuilder.ApplyConfiguration(instance);
                 });
+
+            modelBuilder.Entity<Produto>().HasData(ProdutoSeed.Seed);
+
+            modelBuilder.Entity<Categoria>().HasData(CategoriaSeed.Seed);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
