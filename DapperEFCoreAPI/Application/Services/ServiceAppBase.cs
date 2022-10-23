@@ -5,7 +5,7 @@ namespace DapperEFCoreAPI.Application.Services
 {
     public class ServiceAppBase<TEntity> : IServiceAppBase<TEntity> where TEntity : class
     {
-        private IRepository<TEntity> _repository;
+        protected IRepository<TEntity> _repository;
 
         public ServiceAppBase(IRepository<TEntity> repository)
         {
