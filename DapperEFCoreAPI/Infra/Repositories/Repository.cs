@@ -8,9 +8,10 @@ namespace DapperEFCoreAPI.Infra.Repositories
         private DbSession _session;
         private DapperEFCoreDbContext _dbContext;
 
-        public Repository(DbSession session)
+        public Repository(DbSession session, DapperEFCoreDbContext dbContext)
         {
             _session = session;
+            _dbContext = dbContext;
         }
 
         public virtual List<TEntity> GetAll()
