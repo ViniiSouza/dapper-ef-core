@@ -5,11 +5,13 @@ namespace DapperEFCoreAPI.Application.Services
 {
     public class ServiceAppBase<TEntity> : IServiceAppBase<TEntity> where TEntity : class
     {
-        protected IRepository<TEntity> _repository;
+        protected readonly IRepository<TEntity> _repository;
+        protected readonly IUnitOfWork _unitOfWork;
 
-        public ServiceAppBase(IRepository<TEntity> repository)
+        public ServiceAppBase(IRepository<TEntity> repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public virtual List<TEntity> GetAll()
@@ -35,16 +37,19 @@ namespace DapperEFCoreAPI.Application.Services
         public virtual void Add(TEntity entity)
         {
             _repository.Add(entity);
+            _unitOfWork.Commit();
         }
 
         public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
+            _unitOfWork.Commit();
         }
 
         public virtual void Delete(int id)
         {
             _repository.Delete(id);
+            _unitOfWork.Commit();
         }
     }
 }
