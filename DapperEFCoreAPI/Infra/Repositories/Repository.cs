@@ -13,7 +13,7 @@ namespace DapperEFCoreAPI.Infra.Repositories
             _session = session;
         }
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
             using (var connection = _session.Connection)
             {
@@ -23,7 +23,7 @@ namespace DapperEFCoreAPI.Infra.Repositories
             }
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public virtual async Task<List<TEntity>> GetAllAsync()
         {
             using (var connection = _session.Connection)
             {
@@ -33,7 +33,7 @@ namespace DapperEFCoreAPI.Infra.Repositories
             }
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             using (var connection = _session.Connection)
             {
@@ -44,7 +44,7 @@ namespace DapperEFCoreAPI.Infra.Repositories
             }
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
             using (var connection = _session.Connection)
             {
@@ -55,17 +55,17 @@ namespace DapperEFCoreAPI.Infra.Repositories
             }
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             var entity = GetById(id);
             _dbContext.Set<TEntity>().Remove(entity);

@@ -12,37 +12,37 @@ namespace DapperEFCoreAPI.Application.Services
             _repository = repository;
         }
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public virtual async Task<List<TEntity>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
             return await _repository.GetByIdAsync(id);
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _repository.Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             _repository.Delete(id);
         }
