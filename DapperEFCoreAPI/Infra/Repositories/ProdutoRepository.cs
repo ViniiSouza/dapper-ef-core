@@ -31,5 +31,15 @@ namespace DapperEFCoreAPI.Infra.Repositories
                 return (await connection.QueryAsync<Produto>(query, estoque)).ToList();
             }
         }
+
+        public async Task<List<Produto>> GetAllByCategoria(int categoriaId)
+        {
+            using (var connection = _session.Connection)
+            {
+                string query = "SELECT * FROM Produto" +
+                                "WHERE CategoriaId = @categoriaId";
+                return (await connection.QueryAsync<Produto>(query, categoriaId)).ToList();
+            }
+        }
     }
 }

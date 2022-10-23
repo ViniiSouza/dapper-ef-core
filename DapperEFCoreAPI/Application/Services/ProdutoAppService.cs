@@ -19,5 +19,10 @@ namespace DapperEFCoreAPI.Application.Services
         {
             return await ((IProdutoRepository)_repository).GetAllByValor(valor, maiorQue);
         }
+
+        public async Task<List<Produto>> GetAllByCategoria(int categoriaId)
+        {
+            return await ((IProdutoRepository)_repository).GetAllByCategoria(categoriaId);
+        }
     }
 }
