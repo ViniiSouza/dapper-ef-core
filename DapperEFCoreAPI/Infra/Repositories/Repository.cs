@@ -5,8 +5,8 @@ namespace DapperEFCoreAPI.Infra.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private DbSession _session;
-        private DapperEFCoreDbContext _dbContext;
+        protected DbSession _session;
+        protected DapperEFCoreDbContext _dbContext;
 
         public Repository(DbSession session, DapperEFCoreDbContext dbContext)
         {
