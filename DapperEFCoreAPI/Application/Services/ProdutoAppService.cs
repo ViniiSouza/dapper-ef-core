@@ -6,7 +6,7 @@ namespace DapperEFCoreAPI.Application.Services
 {
     public class ProdutoAppService : ServiceAppBase<Produto>, IProdutoAppService
     {
-        public ProdutoAppService(IRepository<Produto> repository) : base(repository)
+        public ProdutoAppService(IProdutoRepository repository) : base(repository)
         {
         }
     }
