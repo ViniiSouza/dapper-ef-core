@@ -34,7 +34,8 @@
         /// Método de atualização de entidade no banco
         /// </summary>
         /// <param name="entity">Entidade a ser atualizada</param>
-        void Update(TEntity entity);
+        /// <param name="id">Id da entidade a ser atualizada</param>
+        void Update(TEntity entity, int id);
 
         /// <summary>
         /// Método de deleção de entidade do banco

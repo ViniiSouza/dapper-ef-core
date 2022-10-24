@@ -1,9 +1,10 @@
 ﻿using DapperEFCoreAPI.Application.Interfaces;
+using DapperEFCoreAPI.Domain;
 using DapperEFCoreAPI.Infra.Interfaces;
 
 namespace DapperEFCoreAPI.Application.Services
 {
-    public class ServiceAppBase<TEntity> : IServiceAppBase<TEntity> where TEntity : class
+    public class ServiceAppBase<TEntity> : IServiceAppBase<TEntity> where TEntity : EntidadeBase
     {
         protected readonly IRepository<TEntity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
@@ -40,8 +41,9 @@ namespace DapperEFCoreAPI.Application.Services
             _unitOfWork.Commit();
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual void Update(TEntity entity, int id)
         {
+            entity.Id = id;
             _repository.Update(entity);
             _unitOfWork.Commit();
         }
