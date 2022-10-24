@@ -6,7 +6,7 @@ namespace DapperEFCoreAPI.Application.Services
 {
     public class CategoriaAppService : ServiceAppBase<Categoria>, ICategoriaAppService
     {
-        public CategoriaAppService(ICategoriaRepository repository) : base(repository)
+        public CategoriaAppService(ICategoriaRepository repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
         }
     }
