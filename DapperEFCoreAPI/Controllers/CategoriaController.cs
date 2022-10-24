@@ -34,9 +34,9 @@ namespace DapperEFCoreAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Alterar([FromBody] Categoria categoria)
+        public void Alterar([FromBody] Categoria categoria, [FromRoute] int id)
         {
-            _categoriaAppService.Update(categoria);
+            _categoriaAppService.Update(categoria, id);
         }
 
         [HttpDelete("{id}")]
