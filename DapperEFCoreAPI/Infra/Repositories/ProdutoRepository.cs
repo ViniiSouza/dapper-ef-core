@@ -15,9 +15,9 @@ namespace DapperEFCoreAPI.Infra.Repositories
             using (var connection = _session.Connection)
             {
                 var condicao = maiorQue ? ">" : "<";
-                string query = "SELECT * FROM Produto" +
+                string query = "SELECT * FROM Produto " +
                                 $"WHERE Valor {condicao} @valor";
-                return (await connection.QueryAsync<Produto>(query, valor)).ToList();
+                return (await connection.QueryAsync<Produto>(query, new { valor })).ToList();
             }
         }
 
@@ -26,9 +26,9 @@ namespace DapperEFCoreAPI.Infra.Repositories
             using (var connection = _session.Connection)
             {
                 var condicao = maiorQue ? ">" : "<";
-                string query = "SELECT * FROM Produto" +
+                string query = "SELECT * FROM Produto " +
                                 $"WHERE Estoque {condicao} @estoque";
-                return (await connection.QueryAsync<Produto>(query, estoque)).ToList();
+                return (await connection.QueryAsync<Produto>(query, new { estoque })).ToList();
             }
         }
 
@@ -36,9 +36,9 @@ namespace DapperEFCoreAPI.Infra.Repositories
         {
             using (var connection = _session.Connection)
             {
-                string query = "SELECT * FROM Produto" +
+                string query = "SELECT * FROM Produto " +
                                 "WHERE CategoriaId = @categoriaId";
-                return (await connection.QueryAsync<Produto>(query, categoriaId)).ToList();
+                return (await connection.QueryAsync<Produto>(query, new { categoriaId })).ToList();
             }
         }
     }
